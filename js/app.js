@@ -20,19 +20,31 @@ var movesCounter = 0;
 var ratingStars = 0;
 var clicks = 0;
 CardsList = CardsInitialize();
+
+dd(typeof CardsList, 'iam cardsList here', 'c');
+
+var shuffleOne = shuffle(CardsList);
+
+dd(shuffleOne, 'shuffleOne', 'c');
+
 DisplayCards();
 
 // Add event listener
-fireMatcher();
+$('.card').on('click', function(){
+    fireMatcher(this);
+});
+
 
 /*-------------------Operation Area----------*/
 
 function CardsInitialize(){
     var domCards = [];
     domCards = document.getElementsByClassName("card");
+    return domCards;
+}
 
-    dd(domCards, 'This cards exists in the dom right now', 'c')
-//    console.log(domCards);
+function transformer (obj){
+    var
 }
 
 function dd(obj, string = 'Your target', mode = 'l' ){
