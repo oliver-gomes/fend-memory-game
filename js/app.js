@@ -21,11 +21,11 @@ var ratingStars = 0;
 var clicks = 0;
 CardsList = CardsInitialize();
 
-dd(typeof CardsList, 'iam cardsList here', 'c');
+//dd(CardsList, 'iam cardsList here', 'c');
 
 var shuffleOne = shuffle(CardsList);
 
-dd(shuffleOne, 'shuffleOne', 'c');
+//dd(shuffleOne, 'shuffleOne', 'c');
 
 DisplayCards();
 
@@ -40,11 +40,18 @@ $('.card').on('click', function(){
 function CardsInitialize(){
     var domCards = [];
     domCards = document.getElementsByClassName("card");
-    return domCards;
+    return transformer(domCards);
 }
 
 function transformer (obj){
-    var
+    var mapped = [];
+    for(var key in obj){
+        if(obj.hasOwnProperty(key)){
+            mapped.push(obj[key].innerHTML)
+        }
+    }
+
+    return mapped;
 }
 
 function dd(obj, string = 'Your target', mode = 'l' ){
