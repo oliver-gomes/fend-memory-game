@@ -69,9 +69,27 @@ function dd(obj, string = 'Your target', mode = 'l' ){
             break;
     }
 }
-function DisplayCards(){
 
+
+function DisplayCards(){
+    manipulateCards();
 }
+
+
+function manipulateCards(){
+    var list = document.createElement("ul");
+    for (var i = 0; i < shuffleOne.length; i++){
+
+        var li = document.createElement("li");
+        li.innerHTML = shuffleOne[i];
+        li.classList.add("card");
+        list.appendChild(li);
+
+    }
+    dd(list, 'This is new list', 'vd');
+    document.getElementsByClassName("deck")[0].innerHTML = list.innerHTML;
+}
+
 
 function fireMatcher(card){
     displaySymbol(card);
