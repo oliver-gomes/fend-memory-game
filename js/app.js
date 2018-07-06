@@ -72,9 +72,14 @@ function dd(obj, string = 'Your target', mode = 'l' ){
 
 
 function DisplayCards(){
-    manipulateCards();
+    var list = manipulateCards();
+    replacer(list);
 }
 
+
+function replacer(list){
+    document.getElementsByClassName("deck")[0].innerHTML = list.innerHTML;
+}
 
 function manipulateCards(){
     var list = document.createElement("ul");
@@ -86,9 +91,9 @@ function manipulateCards(){
         list.appendChild(li);
 
     }
-    dd(list, 'This is new list', 'vd');
-    document.getElementsByClassName("deck")[0].innerHTML = list.innerHTML;
+    return list;
 }
+
 
 
 function fireMatcher(card){
@@ -96,8 +101,8 @@ function fireMatcher(card){
     markedOpened(card);
 }
 
-function displaySymbol(){
-
+function displaySymbol(card){
+    $(card).addClass("show open");
 }
 
 function markedOpened(card){
