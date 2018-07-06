@@ -124,12 +124,43 @@ isMatch = (openedCards)=>{
 };
 
 
-handleMatchCase = ()=>{
+handleMatchCase = (openedCards)=>{
+    markAsMatched();
+
+    openedCards = [];
+}
+
+markedAsMatched = (openedCards) =>{
+    for(var i = 0; openedCards.length; i++){
+        $(openedCards[i]).addClass("match");
+    }
+}
+
+handleNoMatchCase = (openedCards)=>{
+
+    styleDanger(openedCards);
+    animateCard(openedCards);
+
+    hideSymbols(openedCards);
+
+    openedCards = [];
+}
+
+animateCard = ()=>{
 
 }
 
-handleNoMatchCase = ()=>{
+hideSymbols = ()=> {
+    for(var i = openedCards.length - 1; i >= 0; i--){
+        $(openedCards[i]).removeClass("open show");
+    }
+}
 
+
+styleDanger = (openedCards)=> {
+    for (var i = openedCards.length - 1; i >=0 ; i--){
+        $(openedCards[i]).addClass("danger")
+    }
 }
 
 function markedOpened(card){
@@ -141,9 +172,9 @@ function markedOpened(card){
         openedCards.push(card);
 
         if(isMatch(openedCards)) {
-            handleMatchCase();
+            handleMatchCase(openedCards);
         } else {
-            handleNoMatchCase();
+            handleNoMatchCase(openedCards);
         }
     } else {
         openedCards.push(card);
