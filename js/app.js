@@ -106,5 +106,20 @@ function displaySymbol(card){
 }
 
 function markedOpened(card){
+    if(openedCards.length > 0){
 
+        handleMoves();
+
+        //displaySymbol(card);
+        openedCards.push(card);
+
+        if(isMatch(openedCards)) {
+            handleMatchCase();
+        } else {
+            handleNoMatchCase();
+        }
+    } else {
+        openedCards.push(card);
+        handleMoves();
+    }
 }
