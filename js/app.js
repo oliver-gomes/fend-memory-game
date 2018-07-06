@@ -105,10 +105,37 @@ function displaySymbol(card){
     $(card).addClass("show open");
 }
 
+
+incrementMoves = ()=> {
+    moves++;
+    $('.moves').text(moves);
+}
+
+isMatch = (openedCards)=>{
+    let con1 = openedCards[0].innerHTML != openedCards[1].innerHTML;
+    let con2 = $(openedCards[0]).is($(openedCards[1]));
+
+    if (con1 || con2){
+        return false;
+
+    }
+
+    return true;
+};
+
+
+handleMatchCase = ()=>{
+
+}
+
+handleNoMatchCase = ()=>{
+
+}
+
 function markedOpened(card){
     if(openedCards.length > 0){
 
-        handleMoves();
+        incrementMoves();
 
         //displaySymbol(card);
         openedCards.push(card);
@@ -120,6 +147,6 @@ function markedOpened(card){
         }
     } else {
         openedCards.push(card);
-        handleMoves();
+        incrementMoves();
     }
 }
